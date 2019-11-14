@@ -1,0 +1,100 @@
+{% extends 'base/master.html' %}
+{% block 'body' %}
+
+<h3>this is manager dashboard</h3>
+<div class="container-fluid">
+  <div class="col-md-3">
+      <div class="row">
+          <div class="box" style="min-height:100vh; background-color:#d3d3d3">
+              <h3>Manager Content</h3>
+              <hr>
+              <h3>
+                  <a href="#"><button class="btn btn-success" style="width:100%;" data-target="#add_user" data-toggle="modal">Add User</button> </a>
+              </h3>
+              <h5>
+                  <ul style="list-style-type:none;">
+                      <a href="#"> <li style="margin-top:30px;color:black;"><i class="fa fa-university" aria-hidden="true" style="float:right;"></i>Class</li></a>
+                      <a href="{% url 'manager_teacherview' %}" style="color:black;"><li style="margin-top:30px;"><i class="fa fa-user" aria-hidden="true" style="float:right;"></i>Teacher</li></a>
+                      <a href="#"> <li style="margin-top:30px;color:black;"><i class="fa fa-graduation-cap" aria-hidden="true" style="float:right;"></i>Student</li></a>
+                      <a href="#"> <li style="margin-top:30px;color:black;"><i class="fa fa-bullhorn" aria-hidden="true" style="float:right;"></i>Announcemet</li></a>
+                      <a href="#"> <li style="margin-top:30px;color:black;"><i class="fa fa-cog" aria-hidden="true" style="float:right;"></i>Setting</li></a>
+                      <a href="#"> <li style="margin-top:30px;color:black;"><i class="fa fa-info-circle" aria-hidden="true" style="float:right;"></i>About us</li></a>
+                      <a href="{% url 'signin' %}"> <li style="margin-top:30px;color:black;"><i class="fa fa-sign-out"aria-hidden="true" style="float:right;"></i> Logout</li></a>
+
+                  </ul>
+              </h5>
+          </div>
+      </div>
+  </div>
+ <div class="col-md-9">
+      <div class="row">
+          <div class="box" style="min-height:100vh;background-color:#add8e6">
+              <h3 align="center">Dashboard</h3><hr>
+              <div id="dashboard">
+                  <h4>hi there this is manager-studentview dashboard</h4>
+                   <!-- Page Heading -->
+			<section class="page-heading">
+				<div class="container">
+						<div class="col-md-9">
+							<form class="form" method="post"action="{% url 'manager_studentview' %}">
+                                {% csrf_token %}
+                                <div class="form-group">
+                                    <label style="float:left;font-weight:bold;color:white;">Email <span class="required">*</span></label>
+                                    <input type="text" class="form-control" name="email" placeholder="email@gmail.com">
+                                </div>
+                                <div class="form-group">
+										<div class="clearfix">
+											<label class="pull-left" style="color:white;font-weight:bold;">
+												Full Name <span class="required">*</span>
+											</label>
+                                        </div>
+                                    <input type="text" class="form-control" name="name" placeholder="full name">
+                                </div>
+                                <div class="form-group">
+										<div class="clearfix">
+											<label class="pull-left" style="color:white;font-weight:bold;">
+												Contact no<span class="required">*</span>
+											</label>
+										</div>
+										<input type="number" class="form-control" name="contact" placeholder="Enter contact  &nbsp i.e. 9800000000">
+									</div>
+                                <button type="submit" name="save" value="save" class="btn btn-primary" style="border-radius:10px;">save</button>
+                            </form>
+					    </div>
+				</div>
+			</section>
+			<!-- Page Heading / End -->
+              </div>
+
+          </div>
+      </div>
+  </div>
+</div>
+
+
+
+<!--user signup modal -->
+<div class="modal fade" id="add_user" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <form method="post" action="#">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="detail">Edit Teacher</h4>
+      </div>
+      <div class="modal-body">
+          {% csrf_token %}
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Save</button>
+      </div>
+        </form>
+    </div>
+
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,68 @@
+{% extends 'base/master.html' %}
+{% block 'body' %}
+
+<h3>this is manager dashboard</h3>
+<div class="container-fluid">
+  <div class="col-md-3">
+      <div class="row">
+          <div class="box" style="min-height:100vh; background-color:#d3d3d3">
+              <h3>Manager Content</h3>
+              <hr>
+              <h3>
+                  <a href="#"><button class="btn btn-success" style="width:100%;" data-target="#add_user" data-toggle="modal">Add User</button> </a>
+              </h3>
+              <h5>
+                  <ul style="list-style-type:none;">
+                      <a href="#"> <li style="margin-top:30px;color:black;"><i class="fa fa-university" aria-hidden="true" style="float:right;"></i>Class</li></a>
+                      <a href="{% url 'manager_teacherview' %}" style="color:black;"><li style="margin-top:30px;"><i class="fa fa-user" aria-hidden="true" style="float:right;"></i>Teacher</li></a>
+                      <a href="{% url 'manager_studentview' %}"> <li style="margin-top:30px;color:black;"><i class="fa fa-graduation-cap" aria-hidden="true" style="float:right;"></i>Student</li></a>
+                      <a href="#"> <li style="margin-top:30px;color:black;"><i class="fa fa-bullhorn" aria-hidden="true" style="float:right;"></i>Announcemet</li></a>
+                      <a href="#"> <li style="margin-top:30px;color:black;"><i class="fa fa-cog" aria-hidden="true" style="float:right;"></i>Settings</li></a>
+                      <a href="#"> <li style="margin-top:30px;color:black;"><i class="fa fa-info-circle" aria-hidden="true" style="float:right;"></i>About us</li></a>
+                      <a href="{% url 'signin' %}"> <li style="margin-top:30px;color:black;"><i class="fa fa-sign-out"aria-hidden="true" style="float:right;"></i> Logout</li></a>
+
+                  </ul>
+              </h5>
+          </div>
+      </div>
+  </div>
+ <div class="col-md-9">
+      <div class="row">
+          <div class="box" style="min-height:100vh;background-color:#add8e6">
+              <h3 align="center">Dashboard</h3><hr>
+              <div id="dashboard">
+                  <h4>hi there this is manager dashboard</h4>
+              </div>
+
+          </div>
+      </div>
+  </div>
+</div>
+
+
+
+<!--user signup modal -->
+<div class="modal fade" id="add_user" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <form method="post" action="#">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="detail">Edit Teacher</h4>
+      </div>
+      <div class="modal-body">
+          {% csrf_token %}
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Save</button>
+      </div>
+        </form>
+    </div>
+
+  </div>
+</div>
+
+{% endblock %}
